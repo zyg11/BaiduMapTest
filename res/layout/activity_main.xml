@@ -1,0 +1,287 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/map_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+    <requestFocus />
+   
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:orientation="horizontal"
+            android:padding="0dip" >
+
+        	<TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.37"
+            android:gravity="center"
+            android:text="在" />
+
+        	<EditText
+            android:id="@+id/city_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.46"
+            android:background="@drawable/shape"
+            android:gravity="center_vertical"
+            android:hint="城市"
+            android:padding="0dip"
+            android:textSize="16dp" />
+
+        	<TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.37"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="内搜索" />
+
+        	<AutoCompleteTextView
+            android:id="@+id/searchkey"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19"
+            android:background="@drawable/shape"
+            android:ems="10"
+            android:textSize="16dp"
+            android:text="餐厅" />
+
+            <Button
+        	android:id="@+id/search"
+        	style="?android:attr/buttonStyleSmall"
+        	android:layout_width="wrap_content"
+        	android:layout_height="32dp"
+        	android:onClick="searchButtonProcess"
+        	android:text="搜索" />
+    </LinearLayout>
+    <LinearLayout
+	    android:id="@+id/linearLayout3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:background="@null"
+	    android:orientation="horizontal"
+	    android:padding="0dip" >
+     <EditText
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:textColor="@color/orangered"
+        android:gravity="center_vertical"
+        android:hint="请输入起点"
+        android:textSize="16dp"
+        android:background="@drawable/shape"/>
+
+    <EditText
+        android:id="@+id/end"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@color/orangered"
+        android:ems="6"
+        android:gravity="center_vertical"
+        android:hint="请输入终点"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/shang"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:onClick="nodeClick"
+        android:text="后退" />
+
+    <Button
+        android:id="@+id/xia"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:onClick="nodeClick"
+        android:text="前进"  />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF"
+        android:orientation="vertical" 
+        >
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp" />
+        <Button
+            android:id="@+id/chakan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:onClick="Click"
+            android:text="详情"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/chakan"
+            android:layout_alignBottom="@+id/chakan"
+            android:layout_toRightOf="@+id/tv1"
+            android:text="起始位置"
+            android:textSize="16sp" />
+    </RelativeLayout>
+<LinearLayout
+    android:id="@+id/linearLayout2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/relativeLayout1"
+    android:layout_alignParentRight="true"
+    android:background="@null"
+    android:orientation="vertical"
+    android:padding="0dip" >
+
+     <Button
+         android:id="@+id/map_next_data"
+         android:layout_width="wrap_content"
+         android:layout_height="30dp"
+         android:onClick="goToNextPage"
+         android:padding="0dip"
+         android:text="Next"
+         android:textSize="12dp" />
+     <Button
+        android:id="@+id/walkroute"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:onClick="searchButtonProcess1"
+        android:text="步行"
+        android:textSize="12dp" />
+     <Button
+        android:id="@+id/driveroute"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:onClick="searchButtonProcess1"
+        android:text="驾车"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/transit"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="searchButtonProcess1"
+        android:text="公交"
+        android:textSize="12dp" />
+    <Button
+         android:id="@+id/rotate"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="match_parent"
+         android:layout_height="32dp"
+         android:text="旋转"
+         android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/Normal"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="普通图" />
+    <Button
+        android:id="@+id/hot"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="热力图" />
+    <Button
+        android:id="@+id/satellite"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="卫星图" />
+    <Button
+        android:id="@+id/traffic"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="交通图" />
+    </LinearLayout>       
+    </RelativeLayout>
+
+    </LinearLayout>
+        <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:visibility="gone" >
+        <Button
+            android:id="@+id/btn_over"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="Click"
+            android:text="关闭详情" />
+        <TextView
+            android:id="@+id/qidian"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="起点" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/zhongdian"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="终点" />
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <!--
+         <ScrollView 
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:scrollbars="vertical"
+             android:scrollbarSize="1dp"
+             >
+         <TextView 
+             android:id="@+id/listnodetitle"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             /> 
+         </ScrollView>        -->
+    </LinearLayout>
+</RelativeLayout>
